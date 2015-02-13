@@ -14,15 +14,6 @@ repositories {
     mavenCentral()
 }
 
-buildscript {
-    dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-}
-
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         if (details.requested.group == 'org.apache.tomcat.embed') {
