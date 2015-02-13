@@ -1,0 +1,22 @@
+spring :
+  datasource :
+    driverClassName : org.mariadb.jdbc.Driver
+    url : jdbc:mariadb://localhost:3306/BelajarOauth2
+    username : rizki
+    password : mufrizal
+
+  jpa :
+    hibernate :
+      ddl-auto : update
+
+server :
+  port : 8001
+  context-path : /Belajar-Oauth2-Resource-Server
+  
+# LOGGING
+logging.path : 
+logging.file : LoggingAplikasi.log
+logging.config : classpath:log4j.properties
+logging.level.com.rizki.mufrizal: DEBUG 
+logging.level.org.springframework.web: DEBUG
+logging.level.org.hibernate: ERROR
