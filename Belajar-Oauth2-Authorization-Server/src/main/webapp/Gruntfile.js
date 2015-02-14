@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     wiredep: {
       task: {
         src: [
-          'pages/*.html'
+          'pages/*.jsp'
         ]
       }
     }
