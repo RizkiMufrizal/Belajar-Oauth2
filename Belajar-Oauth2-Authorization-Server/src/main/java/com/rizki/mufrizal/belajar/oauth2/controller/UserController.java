@@ -5,6 +5,7 @@ import com.rizki.mufrizal.belajar.oauth2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Secured({"ROLE_ADMIN"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = USER, method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
