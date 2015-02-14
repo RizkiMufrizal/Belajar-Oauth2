@@ -10,5 +10,5 @@
  */
 
 rootProject.name = 'BelajarOauth2'
-include 'Belajar-Oauth2-Resource-Server', 'Belajar-Oauth2-Authorization-Server'
+include 'Belajar-Oauth2-Resource-Server', 'Belajar-Oauth2-Authorization-Server', 'Belajar-Oauth2-Implicit-Client'
 
