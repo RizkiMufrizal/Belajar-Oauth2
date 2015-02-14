@@ -43,7 +43,7 @@ public class Oauth2Config {
             RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
             remoteTokenServices.setClientId("angularClient");
             remoteTokenServices.setClientSecret("angularPassword");
-            remoteTokenServices.setCheckTokenEndpointUrl("http://localhost:8002/Belajar-Oauth2-Authorization-Server/oauth/check_token");
+            remoteTokenServices.setCheckTokenEndpointUrl("http://localhost:8002/oauth/check_token");
 
             resourceServerSecurityConfigurer
                     .resourceId(RESOURCE_ID)
@@ -54,7 +54,7 @@ public class Oauth2Config {
         public void configure(HttpSecurity httpSecurity) throws Exception {
             httpSecurity
                     .authorizeRequests()
-                    .antMatchers("/admin").hasRole("ADMIN");
+                    .antMatchers("/api/admin").hasRole("ADMIN");
         }
 
     }
