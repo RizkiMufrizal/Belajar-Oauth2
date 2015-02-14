@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+
+war {
+    baseName = 'Belajar-Oauth2-Implicit-Client'
+    version = '0.0.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.group == 'org.apache.tomcat.embed') {
+            details.useVersion '8.0.18'
+        }
+    }
+}
+
+dependencies {
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
+}
