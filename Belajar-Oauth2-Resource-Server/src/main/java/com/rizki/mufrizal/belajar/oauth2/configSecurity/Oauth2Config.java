@@ -41,8 +41,8 @@ public class Oauth2Config {
         @Override
         public void configure(ResourceServerSecurityConfigurer resourceServerSecurityConfigurer) throws Exception {
             RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
-            remoteTokenServices.setClientId("angularClient");
-            remoteTokenServices.setClientSecret("angularPassword");
+            remoteTokenServices.setClientId("jsclient");
+            remoteTokenServices.setClientSecret("jspasswd");
             remoteTokenServices.setCheckTokenEndpointUrl("http://localhost:8002/oauth/check_token");
 
             resourceServerSecurityConfigurer
