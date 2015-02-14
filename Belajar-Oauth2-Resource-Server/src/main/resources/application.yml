@@ -11,7 +11,6 @@ spring :
 
 server :
   port : 8001
-  context-path : /Belajar-Oauth2-Resource-Server
   
 # LOGGING
 logging.path : 

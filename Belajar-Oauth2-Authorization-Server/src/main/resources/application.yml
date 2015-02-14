@@ -1,7 +1,7 @@
 spring :
   view :
     prefix : /pages/
-    suffix : .jsp
+    suffix : .html
   datasource :
     driverClassName : org.mariadb.jdbc.Driver
     url : jdbc:mariadb://localhost:3306/BelajarOauth2
@@ -14,7 +14,6 @@ spring :
 
 server :
   port : 8002
-  context-path : /Belajar-Oauth2-Authorization-Server
   
 # LOGGING
 logging.path : 
