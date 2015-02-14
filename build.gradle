@@ -23,10 +23,26 @@ buildscript {
     }
 }
 
-allprojects {
-    version = '1.0'
+subprojects {
+    apply plugin: 'java'
 
     repositories {
         mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter-web:1.2.1.RELEASE'
+        compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+        compile 'org.mariadb.jdbc:mariadb-java-client:1.1.7'
+        compile 'org.springframework.security.oauth:spring-security-oauth2:2.0.6.RELEASE'
+        compile 'org.springframework.boot:spring-boot-starter-actuator'
+        compile 'org.springframework.boot:spring-boot-starter-logging'
+        compile 'org.springframework.boot:spring-boot-starter-log4j'
+        compile 'org.springframework.boot:spring-boot-starter-log4j2'
+        compile 'commons-logging:commons-logging:1.2'
+        compile 'org.slf4j:slf4j-api:1.7.10'
+        compile 'org.slf4j:jcl-over-slf4j:1.7.10'
+
+        testCompile 'junit:junit:4.12'
     }
 }
