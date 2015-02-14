@@ -1,5 +1,6 @@
 package com.rizki.mufrizal.belajar.oauth2.configSecurity;
 
+import com.rizki.mufrizal.belajar.oauth2.filter.CORSFilter;
 import com.rizki.mufrizal.belajar.oauth2.service.UserDetailLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,11 +14,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 
 @Configuration
-@EnableWebSecurity(debug = true)
 @EnableWebMvcSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableWebSecurity(debug = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -47,17 +49,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/api/SaveUser").permitAll()
+                    .antMatchers("/login", "/api/SaveUser").permitAll()
+                    .antMatchers("/api/User").hasRole("ADMIN")
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/j_spring_security_check")
-                .usernameParameter("j_username")
-                .passwordParameter("j_password")
+                    .formLogin()
+                        .loginPage("/login")
+                        .loginProcessingUrl("/j_spring_security_check")
+                        .failureUrl("/login?error")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
                 .and()
-                .logout()
-                .logoutUrl("/j_spring_security_logout");
+                    .logout()
+                        .logoutUrl("/j_spring_security_logout")
+                        .logoutSuccessUrl("/login?logout")
+                .and()
+                    .csrf()
+                .and()
+                    .exceptionHandling()
+                        .accessDeniedPage("/403")
+                .and()
+                    .addFilterBefore(new CORSFilter(), ChannelProcessingFilter.class);
     }
 
 }
