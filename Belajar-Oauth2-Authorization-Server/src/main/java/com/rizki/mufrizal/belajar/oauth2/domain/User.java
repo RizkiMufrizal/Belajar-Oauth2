@@ -10,14 +10,14 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_user",
         indexes = {
-                @Index(columnList = "username", name = "username")
+                @Index(columnList = "email", name = "email")
         }
 )
 public class User implements Serializable {
 
     @Id
-    @Column(name = "username", length = 30, unique = true)
-    private String username;
+    @Column(name = "email", length = 30, unique = true)
+    private String email;
 
     @Column(name = "password", length = 200)
     private String password;
@@ -29,12 +29,12 @@ public class User implements Serializable {
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     private Set<UserRole> userRoles = new HashSet<UserRole>();
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
