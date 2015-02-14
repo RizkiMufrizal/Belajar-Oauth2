@@ -20,6 +20,7 @@ public class UserController {
     public static final String SAVE_USER = "/UserSave";
     public static final String UPDATE_USER = "/UserUpdate";
     public static final String DELETE_USER = "/UserDelete/{username}";
+
     @Autowired
     private UserService userService;
 
