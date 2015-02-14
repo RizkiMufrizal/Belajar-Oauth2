@@ -18,26 +18,26 @@ public class Oauth2Config {
 
     @Configuration
     @EnableAuthorizationServer
-    protected static class AuthorizationConfig extends AuthorizationServerConfigurerAdapter{
+    protected static class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
         @Autowired
         @Qualifier("authenticationManagerBean")
         private AuthenticationManager authenticationManager;
 
         @Override
-        public void configure(AuthorizationServerEndpointsConfigurer authorizationServerEndpointsConfigurer) throws Exception{
+        public void configure(AuthorizationServerEndpointsConfigurer authorizationServerEndpointsConfigurer) throws Exception {
             authorizationServerEndpointsConfigurer
                     .tokenStore(new InMemoryTokenStore())
                     .authenticationManager(authenticationManager);
         }
 
         @Override
-        public void configure(AuthorizationServerSecurityConfigurer authorizationServerSecurityConfigurer) throws Exception{
+        public void configure(AuthorizationServerSecurityConfigurer authorizationServerSecurityConfigurer) throws Exception {
             authorizationServerSecurityConfigurer.checkTokenAccess("hasRole('CLIENT')");
         }
 
         @Override
-        public void configure(ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception{
+        public void configure(ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
             clientDetailsServiceConfigurer
                     .inMemory()
                     .withClient("clientauthcode")

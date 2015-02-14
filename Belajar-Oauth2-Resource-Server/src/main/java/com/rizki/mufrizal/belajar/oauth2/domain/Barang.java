@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tb_barang")
-public class Barang implements Serializable{
+public class Barang implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")

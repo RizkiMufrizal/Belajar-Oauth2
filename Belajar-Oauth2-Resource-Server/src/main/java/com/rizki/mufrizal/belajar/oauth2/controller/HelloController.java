@@ -17,8 +17,8 @@ public class HelloController {
     private static final String STATE = "state";
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public Map<String, Object> hello(){
-        Map<String, Object> message = new HashMap<String, Object>();
+    public Map<String, Object> hello() {
+        Map<String, Object> message = new HashMap<>();
         message.put("Success", Boolean.TRUE);
         message.put("Info", "Hello Word");
 
@@ -26,8 +26,8 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public Map<String, Object> admin(Principal principal){
-        Map<String, Object> message = new HashMap<String, Object>();
+    public Map<String, Object> admin(Principal principal) {
+        Map<String, Object> message = new HashMap<>();
         message.put("Success", Boolean.TRUE);
         message.put("User", principal.getName());
 
@@ -35,8 +35,8 @@ public class HelloController {
     }
 
     @RequestMapping("/state/new")
-    public Map<String, Object> newState(HttpSession session){
-        Map<String, Object> hasil = new HashMap<String, Object>();
+    public Map<String, Object> newState(HttpSession session) {
+        Map<String, Object> hasil = new HashMap<>();
         hasil.put("sukses", Boolean.TRUE);
 
         String state = UUID.randomUUID().toString();

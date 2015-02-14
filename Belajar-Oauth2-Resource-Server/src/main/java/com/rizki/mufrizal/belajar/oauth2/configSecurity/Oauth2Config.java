@@ -18,28 +18,28 @@ public class Oauth2Config {
 
     @Configuration
     @Order(10)
-    protected static class NonConfigOauth2 extends WebSecurityConfigurerAdapter{
+    protected static class NonConfigOauth2 extends WebSecurityConfigurerAdapter {
 
         @Override
-        public void configure(HttpSecurity httpSecurity) throws Exception{
+        public void configure(HttpSecurity httpSecurity) throws Exception {
             httpSecurity
                     .authorizeRequests()
-                        .antMatchers("/hello").permitAll()
-                        .antMatchers("/**").permitAll()
+                    .antMatchers("/hello").permitAll()
+                    .antMatchers("/**").permitAll()
                     .and()
-                        .anonymous()
+                    .anonymous()
                     .and()
-                        .addFilterBefore(new CORSFilter(), ChannelProcessingFilter.class);
+                    .addFilterBefore(new CORSFilter(), ChannelProcessingFilter.class);
         }
 
     }
 
     @Configuration
     @EnableResourceServer
-    protected static class configOauth2 extends ResourceServerConfigurerAdapter{
+    protected static class configOauth2 extends ResourceServerConfigurerAdapter {
 
         @Override
-        public void configure(ResourceServerSecurityConfigurer resourceServerSecurityConfigurer) throws Exception{
+        public void configure(ResourceServerSecurityConfigurer resourceServerSecurityConfigurer) throws Exception {
             RemoteTokenServices remoteTokenServices = new RemoteTokenServices();
             remoteTokenServices.setClientId("angularClient");
             remoteTokenServices.setClientSecret("angularPassword");
@@ -51,10 +51,10 @@ public class Oauth2Config {
         }
 
         @Override
-        public void configure(HttpSecurity httpSecurity) throws Exception{
+        public void configure(HttpSecurity httpSecurity) throws Exception {
             httpSecurity
                     .authorizeRequests()
-                        .antMatchers("/admin").hasRole("ADMIN");
+                    .antMatchers("/admin").hasRole("ADMIN");
         }
 
     }

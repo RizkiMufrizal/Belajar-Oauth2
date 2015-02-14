@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class BarangServiceImpl implements BarangService{
+public class BarangServiceImpl implements BarangService {
 
     @Resource
     private BarangRepository barangRepository;

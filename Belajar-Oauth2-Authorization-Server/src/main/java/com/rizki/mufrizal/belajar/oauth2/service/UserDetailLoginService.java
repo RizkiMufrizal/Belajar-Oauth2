@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class UserDetailLoginService implements UserDetailsService{
+public class UserDetailLoginService implements UserDetailsService {
 
     @Resource
     private UserRepository userRepository;
@@ -39,12 +39,12 @@ public class UserDetailLoginService implements UserDetailsService{
     }
 
     private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoleSet) {
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 
         for (UserRole userRole : userRoleSet) {
             grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getRole()));
         }
 
-        return new ArrayList<GrantedAuthority>(grantedAuthorities);
+        return new ArrayList<>(grantedAuthorities);
     }
 }

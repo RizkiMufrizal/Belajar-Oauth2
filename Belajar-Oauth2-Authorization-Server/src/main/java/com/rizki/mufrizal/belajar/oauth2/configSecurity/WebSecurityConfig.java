@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity(debug = true)
 @EnableWebMvcSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailLoginService userDetailLoginService;
@@ -29,34 +29,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
+    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
                 .inMemoryAuthentication()
                 .and()
-                    .userDetailsService(userDetailLoginService)
-                    .passwordEncoder(passwordEncoder());
+                .userDetailsService(userDetailLoginService)
+                .passwordEncoder(passwordEncoder());
     }
 
     @Bean
     @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception{
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
     @Override
-    public void configure(HttpSecurity httpSecurity) throws Exception{
+    public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/login").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/api/SaveUser").permitAll()
                 .and()
-                    .formLogin()
-                        .loginPage("/login")
-                        .loginProcessingUrl("/j_spring_security_check")
-                        .usernameParameter("j_username")
-                        .passwordParameter("j_password")
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/j_spring_security_check")
+                .usernameParameter("j_username")
+                .passwordParameter("j_password")
                 .and()
-                    .logout()
-                        .logoutUrl("/j_spring_security_logout");
+                .logout()
+                .logoutUrl("/j_spring_security_logout");
     }
 
 }

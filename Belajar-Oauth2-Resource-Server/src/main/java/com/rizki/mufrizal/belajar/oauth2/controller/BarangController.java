@@ -17,11 +17,11 @@ public class BarangController {
     @Autowired
     private BarangService barangService;
 
-    @Secured({"ADMIN","USER"})
+    @Secured({"ADMIN", "USER"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/barang", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<Barang> getBarang(){
+    public List<Barang> getBarang() {
         return barangService.getBarangList();
     }
 

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(basePackages = {"com.rizki.mufrizal.belajar.oauth2.domain"})
 public class WebApplication {
 
-    public static void main(String[]args){
+    public static void main(String[] args) {
         SpringApplication.run(WebApplication.class, args);
     }
 
