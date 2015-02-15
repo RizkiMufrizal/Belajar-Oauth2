@@ -24,6 +24,15 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
     <!-- endbower -->
+
+    <style type="text/css" rel="stylesheet">
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+    </style>
+
 </head>
 <body>
 
