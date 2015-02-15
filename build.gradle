@@ -40,16 +40,17 @@ allprojects{
 }
 
 subprojects { sub ->
+
+    apply plugin: 'war'
+    apply plugin: 'idea'
+    apply plugin: 'spring-boot'
+
     if(sub.plugins.hasPlugin('war')){
         dependencies {
             providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
             providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
         }
     }
-
-    apply plugin: 'war'
-    apply plugin: 'idea'
-    apply plugin: 'spring-boot'
 
     dependencies {
         compile 'org.springframework.boot:spring-boot-starter-web:1.2.1.RELEASE'
