@@ -1,0 +1,14 @@
+spring :
+  view :
+    prefix : /app/
+    suffix : .html
+
+server :
+  port : 8000
+  
+# LOGGING
+logging.path : 
+logging.file : LoggingAplikasi.log
+logging.config : classpath:log4j.properties
+logging.level.com.rizki.mufrizal: DEBUG 
+logging.level.org.springframework.web: DEBUG
