@@ -22,8 +22,17 @@ buildscript {
     }
 }
 
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.group == 'org.apache.tomcat.embed') {
+            details.useVersion '8.0.18'
+        }
+    }
+}
+
 allprojects{
     apply plugin: 'java'
+    sourceCompatibility = 1.8
 
     repositories {
         mavenCentral()
@@ -39,6 +48,8 @@ subprojects { sub ->
     }
 
     apply plugin: 'war'
+    apply plugin: 'idea'
+    apply plugin: 'spring-boot'
 
     dependencies {
         compile 'org.springframework.boot:spring-boot-starter-web:1.2.1.RELEASE'
