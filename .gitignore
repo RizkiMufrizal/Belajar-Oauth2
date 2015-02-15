@@ -152,6 +152,9 @@ gradle-app.setting
 ### Yeoman template
 node_modules/
 bower_components/
+.tmp
+.sass-cache
+
 ### Linux template
 *~
 
