@@ -22,13 +22,11 @@
       'ui.router',
       'ngBootbox'
       ])
-    .config(function($stateProvider, $urlRouterProvider) {
-
-      $urlRouterProvider.otherwise('/Home');
+    .config(function($stateProvider) {
 
       $stateProvider
         .state('Home', {
-          url: '/Home',
+          url: '/',
           templateUrl: '../views/main.html',
           controller: 'LoginCtrl',
           controllerAs: 'login'
