@@ -21,7 +21,7 @@ public class UserRole implements Serializable {
     private String idCustomerRole;
 
     @Column(name = "role", nullable = false, length = 10)
-    private String role = "ADMIN";
+    private String role;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
