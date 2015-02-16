@@ -23,11 +23,11 @@ public class User implements Serializable {
     private String password;
 
     @Column(name = "enable", columnDefinition = "TINYINT")
-    private Boolean enable = true;
+    private Boolean enable;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = javax.persistence.CascadeType.ALL)
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
-    private Set<UserRole> userRoles = new HashSet<UserRole>();
+    private Set<UserRole> userRoles = new HashSet<>();
 
     public String getEmail() {
         return email;
