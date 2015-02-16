@@ -60,7 +60,7 @@ public class Oauth2Config {
                             .scopes("read", "write")
                             .resourceIds(RESOURCE_ID)
                             .authorities("CLIENT", "USER", "ADMIN")
-                            .redirectUris("http://localhost:8000/")
+                            .redirectUris("http://localhost:8000/index")
                             .accessTokenValiditySeconds(60 * 60 * 24) //untuk sehari
                             .autoApprove(true);
         }
