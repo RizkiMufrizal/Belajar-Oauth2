@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc overview
  * @name belajarOauth2ImplicitClientApp
@@ -8,28 +6,42 @@
  *
  * Main module of the application.
  */
-angular
-  .module('belajarOauth2ImplicitClientApp', [
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+
+(function() {
+  'use strict';
+  angular
+    .module('belajarOauth2ImplicitClientApp', [
+      'ngAnimate',
+      'ngAria',
+      'ngCookies',
+      'ngMessages',
+      'ngResource',
+      'ngRoute',
+      'ngSanitize',
+      'ngTouch',
+      'ui.router',
+      'ngBootbox'
+      ])
+    .config(function($stateProvider, $urlRouterProvider) {
+
+      $urlRouterProvider.otherwise('/Home');
+
+      $stateProvider
+        .state('Home', {
+          url: '/Home',
+          templateUrl: '../views/main.html',
+          controller: 'LoginCtrl',
+          controllerAs: 'login'
+        })
+        .state('About', {
+          url: '/About',
+          templateUrl: '../views/about.html'
+        })
+        .state('Barang', {
+          url: '/Barang',
+          templateUrl: '../views/barang.html',
+          controller: 'BarangCtrl',
+          controllerAs: 'barang'
+        });
+    });
+})();
