@@ -19,7 +19,12 @@
     barang.coba = 'hello word';
 
     function refreshBarang() {
-      BarangFactory.getAllBarang().query({}, function(data) {
+
+      if (!$window.sessionStorage.getItem('token')) {
+        console.log('token belum ada, silahkan login dulu');
+      }
+
+      BarangFactory.getAllBarang($window.sessionStorage.getItem('token')).query({}, function(data) {
         barang.dataBarang = data;
       });
     }
