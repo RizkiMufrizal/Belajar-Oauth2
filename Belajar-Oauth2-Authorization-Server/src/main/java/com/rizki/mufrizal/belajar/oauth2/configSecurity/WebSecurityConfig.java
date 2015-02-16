@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/login", "/api/SaveUser").permitAll()
+                    .antMatchers("/login").permitAll()
                 .and()
                     .formLogin()
                         .loginPage("/login")
