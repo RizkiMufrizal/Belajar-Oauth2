@@ -17,7 +17,7 @@ public class BarangController {
     @Autowired
     private BarangService barangService;
 
-    @Secured({"ADMIN", "USER"})
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/barang", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
