@@ -11,13 +11,14 @@
   angular.module('belajarOauth2ImplicitClientApp')
     .factory('BarangFactory', BarangFactory);
 
-  BarangFactory.$inject = ['$resource'];
+  BarangFactory.$inject = ['$resource', 'BarangService'];
 
-  function BarangFactory($resource) {
+  function BarangFactory($resource, BarangService) {
     var barangFactory = this;
 
-    barangFactory.getAllBarang = function() {
-      return $resource('/api/barang');
+    barangFactory.getAllBarang = function(token) {
+      console.log(BarangService.getBarangAll);
+      return $resource(BarangService.getBarangAll + token);
     };
 
     return barangFactory;
