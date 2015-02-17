@@ -32,10 +32,6 @@
           controller: 'LoginCtrl',
           controllerAs: 'login'
         })
-        .state('About', {
-          url: '/About',
-          templateUrl: '../views/about.html'
-        })
         .state('Barang', {
           url: '/Barang',
           templateUrl: '../views/barang.html',
