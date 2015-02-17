@@ -1,2 +1,87 @@
-<h1>Hello Word</h1>
-<h1>{{barang.coba}}</h1>
+<button type="button" ng-click="barang.clear()" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+  <i class="fa fa-plus fa-lg"></i> Tambah Data
+</button>
+<button type="button" ng-click="barang.getBarang()" class="btn btn-default">
+  <i class="fa fa-refresh fa-spin"></i> Refresh Data
+</button>
+<p></p>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr class="text-center">
+      <td>Nama Barang</td>
+      <td>Jenis Barang</td>
+      <td>Tanggal Kadaluarsa</td>
+      <td>Aksi</td>
+    </tr>
+  </thead>
+  <tbody ng-repeat="b in barang.dataBarang">
+    <tr>
+      <td>{{b.namaBarang}}</td>
+      <td>{{b.jenisBarang}}</td>
+      <td class="text-right">{{b.tanggalKadaluarsa}}</td>
+      <td class="text-center">
+        <button ng-click="barang.editBarang(b)" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+          <i class="fa fa-pencil fa-lg"></i>
+        </button>
+        <button type="button" class="btn btn-danger" ng-bootbox-confirm="Data Barang {{b.namaBarang}} ingin dihapus ? " ng-bootbox-confirm-action="barang.deleteBarang(b)">
+          <i class="fa fa-trash-o fa-lg"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 ng-hide="barang.enable" class="modal-title">Input Data</h4>
+        <h4 ng-show="barang.enable" class="modal-title">Edit Data</h4>
+      </div>
+      <div class="modal-body">
+
+        <form role="form" name="formInputBarang">
+
+          <div ng-show="barang.enable" class="form-group" ng-class="{'has-error' : formInputBarang.idBarang.$invalid && formInputBarang.idBarang.$dirty}">
+            <label for="idBarang">ID Barang</label>
+            <input ng-disabled="barang.enable" type="text" name="idBarang" class="form-control" id="idBarang" placeholder="ID Barang" ng-model="barang.inputanBarang.idBarang">
+            <span ng-show="formInputBarang.idBarang.$error.required && formInputBarang.idBarang.$dirty" class="help-block">ID Barang Harus Diisi</span>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error' : formInputBarang.namaBarang.$invalid && formInputBarang.namaBarang.$dirty}">
+            <label for="namaBarang">Nama Barang</label>
+            <input type="text" name="namaBarang" class="form-control" id="namaBarang" placeholder="Nama Barang" ng-model="barang.inputanBarang.namaBarang" required>
+            <span ng-show="formInputBarang.namaBarang.$error.required && formInputBarang.namaBarang.$dirty" class="help-block">Nama Barang Harus Diisi</span>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error' : formInputBarang.jenisBarang.$invalid && formInputBarang.jenisBarang.$dirty}">
+            <label for="jenisBarang">Jenis Barang</label>
+            <br />
+            <select name="jenisBarang" style="width: 300px;" id="jenisBarang" ui-select2="{ allowClear: true}" placeholder="Pilih Jenis Barang" ng-model="barang.inputanBarang.jenisBarang" required>
+              <option value=""></option>
+              <option ng-repeat="b in barang.jenisBarangCombo" value="{{b.value}}">{{b.jenis}}</option>
+            </select>
+
+            <span ng-show="formInputBarang.jenisBarang.$error.required && formInputBarang.jenisBarang.$dirty" class="help-block">Jenis Barang Harus Diisi</span>
+          </div>
+
+          <div class="form-group" ng-class="{'has-error' : formInputBarang.tanggalKadaluarsa.$invalid && formInputBarang.tanggalKadaluarsa.$dirty}">
+            <label for="tanggalKadaluarsa">Tanggal Kadaluarsa</label>
+            <input type="text" name="tanggalKadaluarsa" class="form-control" id="tanggalKadaluarsa" placeholder="Tanggal Kadaluarsa" ng-model="barang.inputanBarang.tanggalKadaluarsa" required>
+            <span ng-show="formInputBarang.tanggalKadaluarsa.$error.required && formInputBarang.tanggalKadaluarsa.$dirty" class="help-block">Tanggal Kadaluarsa Harus Diisi</span>
+            <span ng-show="formInputBarang.tanggalKadaluarsa.$invalid && formInputBarang.tanggalKadaluarsa.$dirty" class="help-block">Tanggal Kadaluarsa Tidak Valid</span>
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+        <button ng-disabled="formInputBarang.$invalid || formInputBarang.$error.required" ng-hide="barang.enable" ng-click="barang.saveBarang(barang.inputanBarang)" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+        <button ng-disabled="formInputBarang.$invalid || formInputBarang.$error.required" ng-show="barang.enable" ng-click="barang.updateBarang(barang.inputanBarang)" type="button" class="btn btn-success" data-dismiss="modal">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
