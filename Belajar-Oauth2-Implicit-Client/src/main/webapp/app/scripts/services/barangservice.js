@@ -14,11 +14,11 @@
   function BarangService() {
     var barangServiceUrl = this;
 
-    barangServiceUrl.getBarangAll = 'http://localhost:8001/api/barang?access_token=';
+    barangServiceUrl.getBarangAll = 'http://localhost:8001/api/Barang?access_token=';
     barangServiceUrl.saveBarang = 'http://localhost:8001/api/SaveBarang?access_token=';
     barangServiceUrl.updateBarang = 'http://localhost:8001/api/UpdateBarang?access_token=';
     barangServiceUrl.deleteBarang = function(idBarang) {
-      return '/api/DeleteBarang/' + idBarang + '?access_token=';
+      return 'http://localhost:8001/api/DeleteBarang/' + idBarang + '?access_token=';
     };
 
     return barangServiceUrl;
