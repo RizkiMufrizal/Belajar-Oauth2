@@ -1,10 +1,33 @@
 # Belajar-Oauth2
 
-Resource Server         : `http://localhost:8001`
+Teknologi yang digunakan :
 
-Authorization Server    : `http://localhost:8002`
+Server Side :
+* Spring Boot
+* Spring MVC
+* Spring Data JPA
+* Spring Data Redis
+* Spring Security
+* Spring Security Oauth2
+* MariaDB
+* Redis
+* Jackson
+* Tomcat 8
+* Gradle
 
-Implicit Client         : `http://localhost:8000`
+Client Side :
+* Yeoman
+* Grunt
+* NPM
+* Bower
+* Angular
+* JQuery
+* Bootstrap
+
+### List Aplikasi
+* Resource Server         : `http://localhost:8001`
+* Authorization Server    : `http://localhost:8002`
+* Implicit Client         : `http://localhost:8000`
 
 Cara Menjalankan        : `gradle clean build bootRun`
 
