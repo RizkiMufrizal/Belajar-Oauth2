@@ -164,3 +164,5 @@ bower_components/
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
 Belajar-Oauth2-Resource-Server/databaseHSQLDB
+
+*.rdb
