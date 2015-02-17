@@ -1,22 +1,14 @@
 # Belajar-Oauth2
 
-Resource Server :
+Resource Server         : `http://localhost:8001`
 
-    http://localhost:8001
+Authorization Server    : `http://localhost:8002`
 
-Authorization Server :
+Implicit Client         : `http://localhost:8000`
 
-    http://localhost:8002
+Cara Menjalankan        : `gradle clean build bootRun`
 
-Implicit Client :
-
-    http://localhost:8000
-
-Cara Menjalankan :
-
-    gradle clean build bootRun
-
-### flow Grant Type Authorization Code
+### Flow Grant Type Authorization Code
 
 * jalankan `redis server`
 * jalankan `Resource Server` dan `Authorization Server`
@@ -76,7 +68,7 @@ Cara Menjalankan :
     }
     ```
 
-### flow Grant Type Implicit
+### Flow Grant Type Implicit
 
 * jalankan `redis server`
 * jalankan `Resource Server`, `Authorization Server` dan `Implicit Client`
@@ -85,7 +77,7 @@ Cara Menjalankan :
 * jika berhasil login maka kita akan redirect ke page home
 * token ini hanya berlaku sehari
 
-### referensi
+### Referensi
 
 Server Side :
 * https://github.com/endymuhardin/belajar-springoauth2
