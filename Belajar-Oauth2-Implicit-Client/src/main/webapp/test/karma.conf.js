@@ -33,6 +33,8 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/bootbox/bootbox.js',
       'bower_components/ngBootbox/dist/ngBootbox.js',
+      'bower_components/select2/select2.js',
+      'bower_components/angular-ui-select2/src/select2.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
