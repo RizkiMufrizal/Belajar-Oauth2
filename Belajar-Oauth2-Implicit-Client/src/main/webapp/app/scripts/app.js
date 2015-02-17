@@ -20,7 +20,8 @@
       'ngSanitize',
       'ngTouch',
       'ui.router',
-      'ngBootbox'
+      'ngBootbox',
+      'ui.select2'
       ])
     .config(function($stateProvider) {
 
